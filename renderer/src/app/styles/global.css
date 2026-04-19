@@ -1,0 +1,342 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Structural tokens (theme-independent) ────────────────────────────────── */
+:root {
+  --radius-sm:  10px;
+  --radius-md:  12px;
+  --radius-lg:  14px;
+  --ctrl-h:     32px;
+  --gap-xs:      8px;
+  --gap-sm:     12px;
+  --gap-md:     16px;
+  --gap-lg:     20px;
+  --gap-xl:     24px;
+}
+
+/* ── Dark theme (default) ─────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --root-bg:          rgba(10, 10, 10, 0.20);
+  --titlebar-bg:      rgba(8, 8, 8, 0.28);
+  --sidebar-bg:       rgba(6, 6, 6, 0.26);
+  --bg-panel:         rgba(18, 18, 18, 0.58);
+  --editor-bg:        rgba(24, 24, 24, 0.62);
+  --glass:            rgba(255, 255, 255, 0.07);
+  --glass-hover:      rgba(255, 255, 255, 0.12);
+  --glass-border:     rgba(255, 255, 255, 0.11);
+  --glass-border-top: rgba(255, 255, 255, 0.15);
+  --card-active-bg:   rgba(10, 132, 255, 0.13);
+  --card-active-bdr:  rgba(10, 132, 255, 0.55);
+  --accent:           #0a84ff;
+  --accent-glow:      rgba(10, 132, 255, 0.20);
+  --text:             #eeeef5;
+  --text-sec:         #a2a2a8;
+  --text-done:        #5a5a62;
+  --danger:           #ff453a;
+  --success:          #30d158;
+  --separator:        rgba(255, 255, 255, 0.07);
+  --bg-combo:         rgba(10, 8, 20, 0.92);
+  --scroll-h:         rgba(255, 255, 255, 0.10);
+  --scroll-hv:        rgba(255, 255, 255, 0.22);
+  --blur:             blur(16px) saturate(1.3);
+  --blur-sm:          blur(12px) saturate(1.2);
+  --blur-lg:          blur(18px) saturate(1.4);
+  --shadow-panel:     0 8px 32px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06);
+  --shadow-card:      0 2px 12px rgba(0,0,0,0.40);
+  --shadow-elevated:  0 20px 60px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.07);
+  --cmd-bg:           rgba(10, 8, 22, 0.96);
+}
+
+/* ── Light theme — structured glass, clear surface hierarchy ─────────────── */
+[data-theme="light"] {
+  /* 4-level surface hierarchy — progressively more opaque */
+  --root-bg:          rgba(214, 224, 238, 0.78);
+  --titlebar-bg:      rgba(194, 210, 228, 0.62);
+  --sidebar-bg:       rgba(186, 199, 218, 0.60);
+  --bg-panel:         rgba(245, 249, 255, 0.62);
+  --panel-bg-2:       rgba(248, 251, 255, 0.74);
+  --panel-bg-3:       rgba(252, 254, 255, 0.88);
+  --editor-bg:        rgba(251, 252, 255, 0.90);
+  --detail-bg:        rgba(247, 250, 255, 0.80);
+
+  /* Cards */
+  --glass:            rgba(255, 255, 255, 0.72);
+  --glass-hover:      rgba(255, 255, 255, 0.84);
+  --card-active-bg:   rgba(239, 246, 255, 0.92);
+
+  /* Borders */
+  --glass-border:     rgba(68, 95, 132, 0.14);
+  --glass-border-top: rgba(255, 255, 255, 0.80);
+  --card-active-bdr:  rgba(32, 130, 255, 0.44);
+  --border:           rgba(68, 95, 132, 0.14);
+  --border-2:         rgba(68, 95, 132, 0.22);
+  --border-focus:     rgba(32, 130, 255, 0.44);
+
+  /* Accent */
+  --accent:           #2082ff;
+  --accent-glow:      rgba(32, 130, 255, 0.20);
+  --accent-soft:      rgba(32, 130, 255, 0.14);
+  --accent-soft-2:    rgba(32, 130, 255, 0.22);
+
+  /* Text */
+  --text:             #152235;
+  --text-sec:         #43556d;
+  --text-done:        #74849a;
+
+  /* Semantic */
+  --danger:           #df5252;
+  --success:          #22a861;
+  --warning:          #c78f17;
+
+  /* Misc */
+  --separator:        rgba(68, 95, 132, 0.08);
+  --bg-combo:         rgba(255, 255, 255, 0.96);
+  --scroll-h:         rgba(68, 95, 132, 0.14);
+  --scroll-hv:        rgba(68, 95, 132, 0.28);
+  --cmd-bg:           rgba(255, 255, 255, 0.97);
+
+  /* Blur — reduced since surfaces are now opaque enough */
+  --blur:             blur(12px);
+  --blur-sm:          blur(10px);
+  --blur-lg:          blur(14px);
+
+  /* Shadows — cool-toned */
+  --shadow-panel:     0 8px 24px rgba(64, 82, 112, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.70);
+  --shadow-card:      0 4px 14px rgba(64, 82, 112, 0.08);
+  --shadow-elevated:  0 8px 24px rgba(64, 82, 112, 0.10);
+
+  /* Legacy compat */
+  --card-active-col:  rgba(32, 130, 255, 0.14);
+}
+
+
+
+/* ── Base resets ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--root-bg);
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* ── Glass utility classes ────────────────────────────────────────────────── */
+.glass-surface {
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  background: var(--bg-panel) !important;
+  border-top: 1px solid var(--glass-border-top);
+  border-left: 1px solid var(--glass-border);
+  border-right: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-panel);
+}
+
+.glass-card {
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-top);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* Content panel — primary layer, most readable */
+.glass-content {
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  background: var(--editor-bg) !important;
+  border: 1px solid var(--glass-border-top);
+  border-bottom-color: var(--glass-border);
+}
+
+/* ── App structure ────────────────────────────────────────────────────────── */
+.app-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.titlebar-strip {
+  height: 32px;
+  flex-shrink: 0;
+  background: var(--titlebar-bg);
+  -webkit-app-region: drag;
+}
+
+/* ── Scrollbars ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-h);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--scroll-hv); }
+
+/* ── Calendar cell ────────────────────────────────────────────────────────── */
+.cal-cell {
+  transition: background 0.1s;
+}
+.cal-cell:not(.cal-cell--selected):hover {
+  background: rgba(255,255,255,0.05) !important;
+}
+[data-theme="light"] .cal-cell:not(.cal-cell--selected):hover {
+  background: rgba(32, 130, 255, 0.08) !important;
+}
+
+/* ── Task card ────────────────────────────────────────────────────────────── */
+.task-card {
+  transition: background 0.12s, border-color 0.12s, box-shadow 0.12s;
+}
+.task-card:not(.task-card--selected):not(.task-card--done):hover {
+  background: var(--glass-hover) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+}
+[data-theme="light"] .task-card:not(.task-card--selected):not(.task-card--done):hover {
+  background: var(--glass-hover) !important;
+  border-color: var(--border-2) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+/* ── Light theme: glass utility overrides ─────────────────────────────────── */
+[data-theme="light"] .glass-surface {
+  background: var(--bg-panel) !important;
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--border) !important;
+  border-top-color: var(--glass-border-top) !important;
+  box-shadow: var(--shadow-panel);
+}
+[data-theme="light"] .glass-card {
+  background: var(--glass) !important;
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  border: 1px solid var(--border) !important;
+  border-top-color: var(--glass-border-top) !important;
+  box-shadow: var(--shadow-card);
+}
+[data-theme="light"] .glass-content {
+  background: var(--editor-bg) !important;
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  border: 1px solid var(--border-2) !important;
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Light theme: sidebar ─────────────────────────────────────────────────── */
+[data-theme="light"] aside {
+  background: var(--sidebar-bg) !important;
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  border-right: 1px solid var(--border) !important;
+}
+
+/* ── Light theme: task cards ─────────────────────────────────────────────── */
+[data-theme="light"] .task-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-card);
+}
+[data-theme="light"] .task-card--selected {
+  background: var(--card-active-bg) !important;
+  border-color: var(--card-active-bdr) !important;
+  box-shadow: 0 2px 12px rgba(32, 130, 255, 0.12) !important;
+}
+[data-theme="light"] .task-card--done {
+  background: rgba(255, 255, 255, 0.40) !important;
+  border-color: rgba(68, 95, 132, 0.08) !important;
+  box-shadow: none !important;
+}
+
+/* ── Light theme: left panel (tasks page) ─────────────────────────────────── */
+[data-theme="light"] [data-panel="task-list"] {
+  background: var(--bg-panel) !important;
+  border-right-color: var(--border) !important;
+}
+
+/* ── Light theme: toolbar controls ───────────────────────────────────────── */
+[data-theme="light"] select,
+[data-theme="light"] .toolbar-select {
+  background: var(--panel-bg-3) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+/* ── Light theme: priority colors ─────────────────────────────────────────── */
+[data-theme="light"] .priority-low    { color: #2d8fc8; }
+[data-theme="light"] .priority-medium { color: #c07c1a; }
+[data-theme="light"] .priority-high   { color: #c93030; }
+
+
+/* ── Priority colors (dark/default) ──────────────────────────────────────── */
+.priority-low    { color: #64d2ff; }
+.priority-medium { color: #ff9f43; }
+.priority-high   { color: #ff453a; }
+
+/* ── Accent glow ──────────────────────────────────────────────────────────── */
+.accent-glow { box-shadow: 0 0 12px var(--accent-glow); }
+
+/* ── Tiptap editor ────────────────────────────────────────────────────────── */
+/* Full-height variant — editor stretches to fill container */
+.tiptap-full-height .tiptap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.tiptap-full-height .ProseMirror {
+  flex: 1;
+  min-height: 0;
+}
+
+.tiptap-editor .ProseMirror {
+  outline: none;
+  padding: 20px 24px;
+  min-height: 120px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+.tiptap-editor .ProseMirror p { margin: 0 0 6px 0; }
+.tiptap-editor .ProseMirror p:last-child { margin-bottom: 0; }
+.tiptap-editor .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--text-done);
+  float: left;
+  pointer-events: none;
+  height: 0;
+}
+.tiptap-editor .ProseMirror strong { font-weight: 700; }
+.tiptap-editor .ProseMirror em { font-style: italic; }
+.tiptap-editor .ProseMirror ul,
+.tiptap-editor .ProseMirror ol { padding-left: 18px; margin: 4px 0; }
+.tiptap-editor .ProseMirror li { margin: 2px 0; }
+.tiptap-editor .ProseMirror h1,
+.tiptap-editor .ProseMirror h2,
+.tiptap-editor .ProseMirror h3 { font-weight: 700; margin: 8px 0 4px; color: var(--text); }
+.tiptap-editor .ProseMirror h1 { font-size: 18px; }
+.tiptap-editor .ProseMirror h2 { font-size: 15px; }
+.tiptap-editor .ProseMirror h3 { font-size: 13px; }
+.tiptap-editor .ProseMirror code {
+  background: var(--separator);
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 12px;
+  font-family: monospace;
+}
+.tiptap-editor .ProseMirror blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+  color: var(--text-sec);
+  margin: 4px 0;
+}

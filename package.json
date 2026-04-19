@@ -1,0 +1,35 @@
+{
+  "name": "toxo",
+  "version": "2.0.0",
+  "description": "Task management and personal finance desktop application",
+  "author": "TheOverforge",
+  "private": true,
+  "main": "main/dist/index.js",
+  "workspaces": [
+    "main",
+    "preload",
+    "renderer"
+  ],
+  "scripts": {
+    "dev": "concurrently -n main,renderer -c yellow,cyan \"npm run dev:main\" \"npm run dev:renderer\"",
+    "dev:main": "npm -w main run dev",
+    "dev:renderer": "npm -w renderer run dev",
+    "build": "npm -w renderer run build && npm -w preload run build && npm -w main run build",
+    "package": "npm run build && electron-builder",
+    "rebuild-native": "electron-rebuild -f -w better-sqlite3",
+    "start": "electron .",
+    "dev:app": "concurrently -n vite,electron -c cyan,green --kill-others \"npm run dev:renderer\" \"node scripts/start-electron.js\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.0",
+    "electron-rebuild": "^3.2.9",
+    "typescript": "^5.4.5",
+    "wait-on": "^9.0.4"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.8.0",
+    "koffi": "^2.15.2"
+  }
+}
