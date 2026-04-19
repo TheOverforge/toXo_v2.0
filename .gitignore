@@ -46,9 +46,6 @@ docs/*.tex
 # Custom fonts (installed locally, not redistributable)
 shared/assets/fonts/
 
-# Claude Code
-.claude/
-
 # Misc
 docs/documentation(old).pdf
 Thumbs.db
