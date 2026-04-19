@@ -164,6 +164,18 @@ Compatible with toXo v1.0 (PyQt6) — existing databases open without manual mig
 
 ---
 
+## Installation
+
+1. Go to the [**Releases**](https://github.com/TheOverforge/toXo_v2.0/releases) page
+2. Download **`toXo Setup 2.0.exe`** from the latest release
+3. Run the installer — a language selection dialog will appear *(English / Русский)*
+4. Choose your preferred language, select the installation folder, and click **Install**
+5. Launch **toXo** from the desktop shortcut or Start Menu
+
+> The app stores all data locally in `%APPDATA%\toxo\` — no account or internet connection required.
+
+---
+
 ## Getting Started
 
 ### Requirements
