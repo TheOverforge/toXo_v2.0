@@ -136,6 +136,34 @@ Compatible with toXo v1.0 (PyQt6) — existing databases open without manual mig
 
 ---
 
+## System Requirements
+
+### Minimum
+
+| Component | Requirement |
+|---|---|
+| OS | Windows 10 64-bit (build 1903+) or Windows 11 |
+| CPU | Dual-core 1.6 GHz (Intel Core i3 / AMD Ryzen 3 or equivalent) |
+| RAM | 4 GB |
+| Storage | 300 MB free disk space |
+| GPU | DirectX 11 capable — required for acrylic transparency |
+| Display | 1280 × 720 |
+
+### Recommended
+
+| Component | Requirement |
+|---|---|
+| OS | Windows 11 |
+| CPU | Quad-core 2.5 GHz+ (Intel Core i5 / AMD Ryzen 5 or better) |
+| RAM | 8 GB |
+| Storage | 500 MB free disk space |
+| Display | 1920 × 1080 or higher |
+
+> **Acrylic transparency** requires a GPU with DirectX 11 support and Windows 10/11 with DWM composition enabled (default on all supported systems).  
+> On Windows 10 with older hardware, acrylic may fall back to a solid-color background — the app remains fully functional.
+
+---
+
 ## Getting Started
 
 ### Requirements
