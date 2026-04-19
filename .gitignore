@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-electron/
+build/*.tmp
+installer_output/
+main.js
+
+# Electron build artifacts
+out/
+*.spec
+release/
+
+# Python (old app — kept in toxo_old/ for reference, not tracked)
+__pycache__/
+*.pyc
+.venv/
+toxo_old/
+
+# Environment / secrets
+.env
+.env.local
+
+# Editor
+.vscode/
+
+# Database files (user data, never commit)
+*.sqlite
+*.sqlite3
+*.db
+
+# LaTeX build artifacts
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.synctex.gz
+docs/*.toc
+docs/*.fdb_latexmk
+docs/*.fls
+
+# LaTeX source (keep only compiled PDFs)
+docs/*.tex
+
+# Custom fonts (installed locally, not redistributable)
+shared/assets/fonts/
+
+# Misc
+docs/documentation(old).pdf
+Thumbs.db
+.DS_Store

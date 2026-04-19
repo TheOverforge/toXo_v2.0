@@ -1,0 +1,14 @@
+{
+  "name": "@toxo/preload",
+  "version": "2.0.0",
+  "private": true,
+  "main": "dist/preload.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "electron": "^31.0.0"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "appId": "com.toxo.app",
+  "productName": "toXo",
+  "copyright": "Copyright © 2026 TheOverforge",
+  "directories": {
+    "buildResources": "renderer/public",
+    "output": "dist-electron"
+  },
+  "files": [
+    "main/dist/**/*",
+    "preload/dist/**/*",
+    "renderer/dist/**/*",
+    "package.json"
+  ],
+  "extraMetadata": {
+    "main": "main/dist/index.js"
+  },
+  "win": {
+    "target": [{ "target": "nsis", "arch": ["x64"] }],
+    "icon": "renderer/public/app_icon.ico",
+    "requestedExecutionLevel": "asInvoker",
+    "publisherName": "TheOverforge"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "toXo",
+    "artifactName": "${productName} Setup 2.0.${ext}",
+    "multiLanguageInstaller": true,
+    "installerLanguages": ["en_US", "ru_RU"],
+    "installerIcon": "renderer/public/app_icon.ico",
+    "uninstallerIcon": "renderer/public/app_icon.ico",
+    "installerSidebar": "renderer/public/installer_sidebar.bmp",
+    "uninstallerSidebar": "renderer/public/installer_sidebar.bmp",
+    "license": "LICENSE",
+    "runAfterFinish": true,
+    "deleteAppDataOnUninstall": false,
+    "include": "build/installer.nsh"
+  },
+  "electronDist": "node_modules/electron/dist",
+  "asar": true,
+  "asarUnpack": [
+    "node_modules/better-sqlite3/**/*",
+    "node_modules/koffi/**/*"
+  ]
+}
